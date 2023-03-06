@@ -24,5 +24,13 @@ namespace myFirstBackend.Models.DataModels
         public string Requisitos { get; set; } = string.Empty;
         [Required, Range(0, 2)]
         public NivelCurso Nivel { get; set; }
+        [Required]
+        public ICollection<Category> Categories { get; set; } = new List<Category>();
+        [Required]
+        public Chapter Chapters { get; set; } = new Chapter();
+        [Required]
+        public ICollection<Student> Students { get; set; } = new List<Student>();
+
+
     }
 }

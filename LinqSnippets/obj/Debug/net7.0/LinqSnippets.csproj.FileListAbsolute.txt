@@ -1,0 +1,12 @@
+D:\Archivos\Code\C#_Workspace\myFirstBackend\LinqSnippets\bin\Debug\net7.0\LinqSnippets.deps.json
+D:\Archivos\Code\C#_Workspace\myFirstBackend\LinqSnippets\bin\Debug\net7.0\LinqSnippets.dll
+D:\Archivos\Code\C#_Workspace\myFirstBackend\LinqSnippets\bin\Debug\net7.0\LinqSnippets.pdb
+D:\Archivos\Code\C#_Workspace\myFirstBackend\LinqSnippets\obj\Debug\net7.0\LinqSnippets.csproj.AssemblyReference.cache
+D:\Archivos\Code\C#_Workspace\myFirstBackend\LinqSnippets\obj\Debug\net7.0\LinqSnippets.GeneratedMSBuildEditorConfig.editorconfig
+D:\Archivos\Code\C#_Workspace\myFirstBackend\LinqSnippets\obj\Debug\net7.0\LinqSnippets.AssemblyInfoInputs.cache
+D:\Archivos\Code\C#_Workspace\myFirstBackend\LinqSnippets\obj\Debug\net7.0\LinqSnippets.AssemblyInfo.cs
+D:\Archivos\Code\C#_Workspace\myFirstBackend\LinqSnippets\obj\Debug\net7.0\LinqSnippets.csproj.CoreCompileInputs.cache
+D:\Archivos\Code\C#_Workspace\myFirstBackend\LinqSnippets\obj\Debug\net7.0\LinqSnippets.dll
+D:\Archivos\Code\C#_Workspace\myFirstBackend\LinqSnippets\obj\Debug\net7.0\refint\LinqSnippets.dll
+D:\Archivos\Code\C#_Workspace\myFirstBackend\LinqSnippets\obj\Debug\net7.0\LinqSnippets.pdb
+D:\Archivos\Code\C#_Workspace\myFirstBackend\LinqSnippets\obj\Debug\net7.0\ref\LinqSnippets.dll
