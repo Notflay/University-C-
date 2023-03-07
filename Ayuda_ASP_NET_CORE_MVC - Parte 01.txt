@@ -1,0 +1,31 @@
+﻿Menu Herramientas / Administrador de paquetes NuGet / Administrar paquetes NuGet para la Solucion
+
+En Examinar colocar:
+                                           SDK =>  5.0    	3.1
+Microsoft.EntityFrameworkCore.SqlServer    -- > 5.0.17 		o 3.1.30
+
+Microsoft.EntityFrameworkCore.Tools         --> 5.0.17 		o 3.1.30
+
+
+
+-- ingenieria de reversa para crear las clases desde la BD de SQL Server
+Herramientas / Administrador de paquetes NuGet / Consola del Administrador de Paquetes
+
+PM>
+-- Autenticación de SQL Server
+Scaffold-DbContext "Data Source=localhost;Initial Catalog=NEGOCIOS2020;User ID=sa;Password=sql;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+-- Autenticación de Windows
+Scaffold-DbContext "server=.;database=NEGOCIOS2020;integrated security=true;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+Scaffold-DbContext "Data Source=JULIODELL;Initial Catalog=NEGOCIOS2020;trusted_connection=yes;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+Scaffold-DbContext "Data Source=QA\SQLEXPRESS;Initial Catalog=NEGOCIOS2020;Integrated Security=SSPI; User ID=sa;Password=sql;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+
+add-migration "Create Users table"
+Update-Database -Verbose
+Script-Migration
+
+protectd: para que pueda ser utilizado en las clases hijas
+virtual: para que pueda ser sobrescrita en las clases hijas y sea polimorfismo 
