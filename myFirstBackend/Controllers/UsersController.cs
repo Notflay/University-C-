@@ -14,6 +14,7 @@ namespace myFirstBackend.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+
         private readonly UniversityDBContext _context;
 
         public UsersController(UniversityDBContext context)
@@ -29,6 +30,7 @@ namespace myFirstBackend.Controllers
         }
 
         // GET: api/Users/5
+        /*
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -37,6 +39,44 @@ namespace myFirstBackend.Controllers
                 return NotFound();
             }
             var user = await _context.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return user;
+        }*/
+
+        /*
+        [HttpGet("{name}")]
+        public async Task<ActionResult<User>> GetUseForN(string name)
+        {
+            if (_context.Users == null)
+            {
+                return NotFound();
+            }
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Name == name);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return user;
+        }*/
+
+        [HttpGet("{name}")]
+        public async Task<ActionResult<object>> GetUseForN(string name)
+        {
+            if (_context.Users == null)
+            {
+                return NotFound();
+            }
+            var user = await _context.Users
+                .Where(x => x.CreatedBy == name)
+                .Select(u => new { u.Name, u.Email })
+                .ToListAsync();
 
             if (user == null)
             {

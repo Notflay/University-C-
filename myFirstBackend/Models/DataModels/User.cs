@@ -2,6 +2,7 @@
 
 namespace myFirstBackend.Models.DataModels
 {
+
     public class User : BaseEntity
     {
         [Required, StringLength(50)]
@@ -12,5 +13,6 @@ namespace myFirstBackend.Models.DataModels
         public string Email { get; set; } = string.Empty;
         [Required]
         public string Password { get; set; } = string.Empty;
+        public string Rol { get; set; } = "Usuario";
     }
 }

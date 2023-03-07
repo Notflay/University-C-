@@ -1,6 +1,8 @@
 // 1. Usings to work with EntityFramework
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Microsoft.SqlServer.Server;
+using myFirstBackend;
 using myFirstBackend.DataAccess;
 using myFirstBackend.Services;
 
@@ -15,22 +17,53 @@ builder.Services.AddDbContext<UniversityDBContext>(options => options.UseSqlServ
 
 // 7. Add Services of JWT Autorization 
 // TODO: 
-// builder.Services.AddJwtTokenServices(builder.Configuration);
+builder.Services.AddJwtTokenServices(builder.Configuration);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 
 // 4. Add custom Services (folder Services)
 builder.Services.AddScoped<IStudentsServices, StudentServices>();
 builder.Services.AddScoped<ICursosServices, CursoServices>();
-/// TODO: Add the rest of services
+// TODO: Add the rest of services 
+
+// 8 Add Autorization
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("UserOnlyPolicy", policy => policy.RequireClaim("UserOnly", "User1"));
+});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-// 8. TODO: Config Swagger to take care of Autorization of JWT
-builder.Services.AddSwaggerGen();
+// 9. Config Swagger to take care of Autorization of JWT
+builder.Services.AddSwaggerGen(options =>
+    {
+        // We define the security for authorization
+        options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            Name = "Authorization",
+            Type = SecuritySchemeType.Http,
+            Scheme = "Bearer",
+            BearerFormat = "JWT",
+            In = ParameterLocation.Header,
+            Description = "JWT Authorization Header using Bearer Scheme",
+        });
+        options.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme{
+                  Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                },
+                new string[] { }
+            }
+        });
+    }
+);
 
 // 5. CORS Configuration
 builder.Services.AddCors(options =>
